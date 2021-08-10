@@ -96,7 +96,7 @@ nav{
                     position: absolute;
                     top: -15px;
                     left: 0px;
-                    width: 115px;
+                    width: 140px;
                     height: 1px;
                     background-color: rgb(94,96,82);
                 }
@@ -135,17 +135,10 @@ main{
             .founder-img{
                 max-width: 1600px;
                 width: 50%;
-                position: relative;
                 img{
                     width: 100%;
                     border-radius: 0px 15px 15px 0px;
                 }
-                .ladder-img{
-                    position: absolute;
-                    bottom: -24rem;
-                    right: 20em;
-                    z-index: 1;
-                } 
             }
             .discript{
                 width: 710px;
@@ -193,10 +186,19 @@ main{
                 }
                 .ladder-img{
                     position: absolute;
-                    bottom: -24rem;
-                    left: 20rem;
+                    top: -24rem;
+                    right: 7rem;
                     z-index: 1;
                 } 
+                .ladder-people-img{
+                    position: absolute;
+                    top: -29rem;
+                    right: 6rem;
+                    z-index: 2;
+                    img{
+                        height: 250px;
+                    }
+                }
             }
             .discript{
                 width: 710px;
@@ -239,6 +241,22 @@ main{
                     width: 100%;
                     border-radius: 0px 15px 15px 0px;
                 }
+                .ladder-img{
+                    position: absolute;
+                    top: -24rem;
+                    left: 7rem;
+                    z-index: 1;
+                }
+                .ladder-people-img{
+                    position: absolute;
+                    top: -17.5rem;
+                    left: 6rem;
+                    z-index: 2;
+                    img{
+                        height: 250px;
+                        transform: scaleX(-1);
+                    }
+                } 
             }
             .discript{
                 width: 710px;
@@ -875,68 +893,81 @@ main{
             } 
         }
         //聯絡資訊
-        .map-infor{
+        .shop-img{
             max-height: 956.25px;
             height: 85rem;
+            background-image: url(./img/tribake-shop.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            background-position: center center;
+            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            .map-box{
-                display: flex;
-                justify-content: center;
-                .shop-infor{
-                    display: flex;
-                    align-items: center;
-                    padding-left: 30px;
-                    background-color: rgb(27,155,147);
-                    width: 550px;
-                    border-radius: 0px 15px 15px 0px;
-                    .content{
-                        .title{
-                            margin-bottom: 20px;
-                            p{
-                                font-size: 54px;
-                                margin: 0px;
-                                color: rgb(255,255,255);
-                            }
-                        }
-                        .contact{
-                            margin-bottom: 20px;
-                            p{
-                                font-size: 24px;
-                                margin: 0px;
-                                color: rgb(255,255,255);
-                                margin-bottom: 10px;
-                            }
-                        }
-                        .social-icon{
-                            i{
-                                font-size: 54px;
-                                color: rgb(255,255,255);
-                                &:not(:last-child){
-                                    margin-right: 20px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+           
         }
     }  
 }
 footer{
     max-width: 1920px;
-    height: 150px;
-    margin: auto;
+
+    padding: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     @include background-change(){
         background-color: rgb(94,96,82);
     };
-    p{
-        font-size: 24px;
-        color: rgb(235,230,218);
+    .shop-infor{
+        max-width: 1350px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .logo-img{
+            margin-right: 5rem;
+            img{
+                height: 215px;
+            }
+        }
+        .shop-discript{
+            display: flex; 
+            .content{
+                .title{
+                    margin-bottom: 20px;
+                    p{
+                        font-size: 54px;
+                        margin: 0px;
+                        color: rgb(255,255,255);
+                    }
+                }
+                .contact{
+                    margin-bottom: 20px;
+                    p{
+                        font-size: 24px;
+                        margin: 0px;
+                        color: rgb(255,255,255);
+                        margin-bottom: 10px;
+                    }
+                }
+                .social-icon{
+                    i{
+                        font-size: 54px;
+                        color: rgb(255,255,255);
+                        &:not(:last-child){
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+        }
     }
+    .copyright{
+        p{
+            font-size: 24px;
+            color: rgb(235,230,218);
+        }
+    }
+    
 }

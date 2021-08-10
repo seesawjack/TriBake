@@ -112,7 +112,7 @@ nav .navbar ul li .social-icon:before {
   position: absolute;
   top: -15px;
   left: 0px;
-  width: 115px;
+  width: 140px;
   height: 1px;
   background-color: #5e6052;
 }
@@ -166,19 +166,11 @@ main .main-container .brand-mind {
 main .main-container .brand-mind .founder-img {
   max-width: 1600px;
   width: 50%;
-  position: relative;
 }
 
 main .main-container .brand-mind .founder-img img {
   width: 100%;
   border-radius: 0px 15px 15px 0px;
-}
-
-main .main-container .brand-mind .founder-img .ladder-img {
-  position: absolute;
-  bottom: -24rem;
-  right: 20em;
-  z-index: 1;
 }
 
 main .main-container .brand-mind .discript {
@@ -236,9 +228,20 @@ main .main-container .brand-mind-people .employee-img img {
 
 main .main-container .brand-mind-people .employee-img .ladder-img {
   position: absolute;
-  bottom: -24rem;
-  left: 20rem;
+  top: -24rem;
+  right: 7rem;
   z-index: 1;
+}
+
+main .main-container .brand-mind-people .employee-img .ladder-people-img {
+  position: absolute;
+  top: -29rem;
+  right: 6rem;
+  z-index: 2;
+}
+
+main .main-container .brand-mind-people .employee-img .ladder-people-img img {
+  height: 250px;
 }
 
 main .main-container .brand-mind-people .discript {
@@ -285,6 +288,26 @@ main .main-container .brand-mind-product .product-img {
 main .main-container .brand-mind-product .product-img img {
   width: 100%;
   border-radius: 0px 15px 15px 0px;
+}
+
+main .main-container .brand-mind-product .product-img .ladder-img {
+  position: absolute;
+  top: -24rem;
+  left: 7rem;
+  z-index: 1;
+}
+
+main .main-container .brand-mind-product .product-img .ladder-people-img {
+  position: absolute;
+  top: -17.5rem;
+  left: 6rem;
+  z-index: 2;
+}
+
+main .main-container .brand-mind-product .product-img .ladder-people-img img {
+  height: 250px;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
 }
 
 main .main-container .brand-mind-product .discript {
@@ -1262,9 +1285,14 @@ main .main-container .cooperation .collaborator-container .collaborator .name p 
   text-align: center;
 }
 
-main .main-container .map-infor {
+main .main-container .shop-img {
   max-height: 956.25px;
   height: 85rem;
+  background-image: url(./img/tribake-shop.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1274,67 +1302,18 @@ main .main-container .map-infor {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-main .main-container .map-infor .map-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-main .main-container .map-infor .map-box .shop-infor {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-left: 30px;
-  background-color: #1b9b93;
-  width: 550px;
-  border-radius: 0px 15px 15px 0px;
-}
-
-main .main-container .map-infor .map-box .shop-infor .content .title {
-  margin-bottom: 20px;
-}
-
-main .main-container .map-infor .map-box .shop-infor .content .title p {
-  font-size: 54px;
-  margin: 0px;
-  color: white;
-}
-
-main .main-container .map-infor .map-box .shop-infor .content .contact {
-  margin-bottom: 20px;
-}
-
-main .main-container .map-infor .map-box .shop-infor .content .contact p {
-  font-size: 24px;
-  margin: 0px;
-  color: white;
-  margin-bottom: 10px;
-}
-
-main .main-container .map-infor .map-box .shop-infor .content .social-icon i {
-  font-size: 54px;
-  color: white;
-}
-
-main .main-container .map-infor .map-box .shop-infor .content .social-icon i:not(:last-child) {
-  margin-right: 20px;
 }
 
 footer {
   max-width: 1920px;
-  height: 150px;
-  margin: auto;
+  padding: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1358,7 +1337,62 @@ footer:before {
           filter: brightness(1.07);
 }
 
-footer p {
+footer .shop-infor {
+  max-width: 1350px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .shop-infor .logo-img {
+  margin-right: 5rem;
+}
+
+footer .shop-infor .logo-img img {
+  height: 215px;
+}
+
+footer .shop-infor .shop-discript {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer .shop-infor .shop-discript .content .title {
+  margin-bottom: 20px;
+}
+
+footer .shop-infor .shop-discript .content .title p {
+  font-size: 54px;
+  margin: 0px;
+  color: white;
+}
+
+footer .shop-infor .shop-discript .content .contact {
+  margin-bottom: 20px;
+}
+
+footer .shop-infor .shop-discript .content .contact p {
+  font-size: 24px;
+  margin: 0px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+footer .shop-infor .shop-discript .content .social-icon i {
+  font-size: 54px;
+  color: white;
+}
+
+footer .shop-infor .shop-discript .content .social-icon i:not(:last-child) {
+  margin-right: 20px;
+}
+
+footer .copyright p {
   font-size: 24px;
   color: #ebe6da;
 }
