@@ -28,7 +28,7 @@ nav{
         position: fixed;
         top: 0px;
         right: 0px;
-        z-index: 3;
+        z-index: 10;
         background-color: rgb(118,105,87);
         border-radius: 0px 0px 0px 15px;
         cursor: pointer;
@@ -71,6 +71,7 @@ nav{
         z-index: 2;
         transform: translateX(100%);
         transition: 1s;
+        z-index: 9;
         @include background-change(){
             background-color: white;
             opacity: 0.9;
@@ -198,6 +199,23 @@ main{
                     img{
                         height: 250px;
                     }
+                    .watering{
+                        width:80%;
+                        height: unset;
+                        position: absolute;
+                        top: 7rem;
+                        right: 7rem;
+                        z-index: -1; 
+                    }
+                }
+                .growth-gif{
+                    position: absolute;
+                    top: -18.5rem;
+                    right: 18rem;
+                    z-index: 2;
+                    img{
+                        height: 300px;
+                    }
                 }
             }
             .discript{
@@ -256,6 +274,49 @@ main{
                         height: 250px;
                         transform: scaleX(-1);
                     }
+                    .crayon{
+                        width:35%;
+                        height: unset;
+                        position: absolute;
+                        top: 7rem;
+                        right: 2rem;
+                        transform: rotate(85deg);
+                        z-index: -1; 
+                    }
+                }
+                .tribake-employee{
+                    position: absolute;
+                    top: -25.5rem;
+                    left: 22rem;
+                    z-index: 2;
+                    animation: people-move 7s infinite;
+                    img{
+                        width: 600px;
+                       
+                    }
+                    @keyframes people-move {
+                        0%{
+                            left: 21.5rem;
+                            transform: rotate(-1deg);
+                        }
+                        25%{
+                            left: 22.5rem;
+                            transform: rotate(1deg);
+                        }
+                        50%{
+                            left: 21.5rem;
+                            transform: rotate(-1deg);
+                        }
+                        75%{
+                            left: 22.5rem;
+                            transform: rotate(1deg);
+                        }
+                        100%{
+                            left: 21.5rem;
+                            transform: rotate(-1deg);
+                        }
+                        
+                    }
                 } 
             }
             .discript{
@@ -303,21 +364,22 @@ main{
                 .cloudy{
                     position: absolute;
                   &.first{
-                     top: -100px;
+                     top: -125px;
                      left: -20px; 
                   }
                   &.second{
-                    top: -100px;
+                    top: -135px;
                     left: -20px; 
                   }
                   &.third{
-                    top: -100px;
+                    top: -135px;
                     left: -20px; 
                   }
                 }
             }
             .title{
                 margin-bottom: 20px;
+                z-index: 1;
                 p{
                     font-size: 72px;
                     letter-spacing: 1.2px;
@@ -892,7 +954,7 @@ main{
                 }
             } 
         }
-        //聯絡資訊
+        // 店面照片
         .shop-img{
             max-height: 956.25px;
             height: 85rem;
@@ -901,72 +963,116 @@ main{
             background-attachment: fixed; 
             background-position: center center;
             background-size: cover;
+
             display: flex;
             align-items: center;
-            justify-content: center;
-           
+            justify-content: center; 
         }
     }  
 }
 footer{
     max-width: 1920px;
 
-    padding: 50px;
+    padding: 50px 50px 0px 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    
     position: relative;
     @include background-change(){
         background-color: rgb(94,96,82);
     };
     .shop-infor{
-        max-width: 1350px;
-        width: 100%;
         display: flex;
-        justify-content: center;
-        .logo-img{
-            margin-right: 5rem;
-            img{
-                height: 215px;
+        justify-content: space-around;
+        align-items: center;
+        .shop-detail-infor{
+            display: flex;
+            .logo-img{
+                margin-right: 5rem;
+                img{
+                    height: 215px;
+                }
             }
-        }
-        .shop-discript{
-            display: flex; 
-            .content{
-                .title{
-                    margin-bottom: 20px;
-                    p{
-                        font-size: 54px;
-                        margin: 0px;
-                        color: rgb(255,255,255);
+            .shop-discript{
+                display: flex; 
+                .content{
+                    .title{
+                        margin-bottom: 20px;
+                        p{
+                            font-size: 54px;
+                            margin: 0px;
+                            color: rgb(255,255,255);
+                        }
                     }
-                }
-                .contact{
-                    margin-bottom: 20px;
-                    p{
-                        font-size: 24px;
-                        margin: 0px;
-                        color: rgb(255,255,255);
-                        margin-bottom: 10px;
-                    }
-                }
-                .social-icon{
-                    i{
-                        font-size: 54px;
-                        color: rgb(255,255,255);
-                        &:not(:last-child){
-                            margin-right: 20px;
+                    .contact{
+                        p{
+                            font-size: 24px;
+                            margin: 0px;
+                            color: rgb(255,255,255);
+                            &:not(:last-child){
+                                margin-bottom: 10px;
+                            }
                         }
                     }
                 }
             }
         }
+        .other-link{
+            height: 218px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 24px;
+            .map{
+                width: 200px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                border: 3px solid white;
+                border-radius: 10px;
+                p{
+                    color: white;
+                }
+                i{
+                    margin-right: 20px;
+                    color: white;
+                }
+            }
+            .social-media{
+                width: 200px;
+                height: 50px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                position: relative;
+                border: 3px solid white;
+                border-radius: 10px;
+                i{
+                    color: white;
+                }
+            }
+            .credit-card{
+                background-color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 2px 1px;
+                img{
+                    width: 200px;
+                }
+            }
+        }
     }
     .copyright{
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         p{
-            font-size: 24px;
-            color: rgb(235,230,218);
+            font-size: 18px;
+            color: rgb(184, 184, 184);
         }
     }
     

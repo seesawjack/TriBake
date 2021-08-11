@@ -13,7 +13,7 @@ nav .burger {
   position: fixed;
   top: 0px;
   right: 0px;
-  z-index: 3;
+  z-index: 10;
   background-color: #766957;
   border-radius: 0px 0px 0px 15px;
   cursor: pointer;
@@ -66,6 +66,7 @@ nav .navbar {
           transform: translateX(100%);
   -webkit-transition: 1s;
   transition: 1s;
+  z-index: 9;
 }
 
 nav .navbar:before {
@@ -244,6 +245,26 @@ main .main-container .brand-mind-people .employee-img .ladder-people-img img {
   height: 250px;
 }
 
+main .main-container .brand-mind-people .employee-img .ladder-people-img .watering {
+  width: 80%;
+  height: unset;
+  position: absolute;
+  top: 7rem;
+  right: 7rem;
+  z-index: -1;
+}
+
+main .main-container .brand-mind-people .employee-img .growth-gif {
+  position: absolute;
+  top: -18.5rem;
+  right: 18rem;
+  z-index: 2;
+}
+
+main .main-container .brand-mind-people .employee-img .growth-gif img {
+  height: 300px;
+}
+
 main .main-container .brand-mind-people .discript {
   width: 710px;
   margin: auto;
@@ -310,6 +331,86 @@ main .main-container .brand-mind-product .product-img .ladder-people-img img {
           transform: scaleX(-1);
 }
 
+main .main-container .brand-mind-product .product-img .ladder-people-img .crayon {
+  width: 35%;
+  height: unset;
+  position: absolute;
+  top: 7rem;
+  right: 2rem;
+  -webkit-transform: rotate(85deg);
+          transform: rotate(85deg);
+  z-index: -1;
+}
+
+main .main-container .brand-mind-product .product-img .tribake-employee {
+  position: absolute;
+  top: -25.5rem;
+  left: 22rem;
+  z-index: 2;
+  -webkit-animation: people-move 7s infinite;
+          animation: people-move 7s infinite;
+}
+
+main .main-container .brand-mind-product .product-img .tribake-employee img {
+  width: 600px;
+}
+
+@-webkit-keyframes people-move {
+  0% {
+    left: 21.5rem;
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  25% {
+    left: 22.5rem;
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+  50% {
+    left: 21.5rem;
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  75% {
+    left: 22.5rem;
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+  100% {
+    left: 21.5rem;
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+}
+
+@keyframes people-move {
+  0% {
+    left: 21.5rem;
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  25% {
+    left: 22.5rem;
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+  50% {
+    left: 21.5rem;
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  75% {
+    left: 22.5rem;
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+  100% {
+    left: 21.5rem;
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+}
+
 main .main-container .brand-mind-product .discript {
   width: 710px;
   margin: auto;
@@ -363,22 +464,23 @@ main .main-container .news .cloudy-img .cloudy {
 }
 
 main .main-container .news .cloudy-img .cloudy.first {
-  top: -100px;
+  top: -125px;
   left: -20px;
 }
 
 main .main-container .news .cloudy-img .cloudy.second {
-  top: -100px;
+  top: -135px;
   left: -20px;
 }
 
 main .main-container .news .cloudy-img .cloudy.third {
-  top: -100px;
+  top: -135px;
   left: -20px;
 }
 
 main .main-container .news .title {
   margin-bottom: 20px;
+  z-index: 1;
 }
 
 main .main-container .news .title p {
@@ -1306,7 +1408,7 @@ main .main-container .shop-img {
 
 footer {
   max-width: 1920px;
-  padding: 50px;
+  padding: 50px 50px 0px 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1314,12 +1416,6 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: relative;
 }
 
@@ -1338,62 +1434,150 @@ footer:before {
 }
 
 footer .shop-infor {
-  max-width: 1350px;
-  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer .shop-infor .shop-detail-infor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer .shop-infor .shop-detail-infor .logo-img {
+  margin-right: 5rem;
+}
+
+footer .shop-infor .shop-detail-infor .logo-img img {
+  height: 215px;
+}
+
+footer .shop-infor .shop-detail-infor .shop-discript {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer .shop-infor .shop-detail-infor .shop-discript .content .title {
+  margin-bottom: 20px;
+}
+
+footer .shop-infor .shop-detail-infor .shop-discript .content .title p {
+  font-size: 54px;
+  margin: 0px;
+  color: white;
+}
+
+footer .shop-infor .shop-detail-infor .shop-discript .content .contact p {
+  font-size: 24px;
+  margin: 0px;
+  color: white;
+}
+
+footer .shop-infor .shop-detail-infor .shop-discript .content .contact p:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+footer .shop-infor .other-link {
+  height: 218px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 24px;
+}
+
+footer .shop-infor .other-link .map {
+  width: 200px;
+  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  border: 3px solid white;
+  border-radius: 10px;
 }
 
-footer .shop-infor .logo-img {
-  margin-right: 5rem;
+footer .shop-infor .other-link .map p {
+  color: white;
 }
 
-footer .shop-infor .logo-img img {
-  height: 215px;
+footer .shop-infor .other-link .map i {
+  margin-right: 20px;
+  color: white;
 }
 
-footer .shop-infor .shop-discript {
+footer .shop-infor .other-link .social-media {
+  width: 200px;
+  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  border: 3px solid white;
+  border-radius: 10px;
 }
 
-footer .shop-infor .shop-discript .content .title {
-  margin-bottom: 20px;
-}
-
-footer .shop-infor .shop-discript .content .title p {
-  font-size: 54px;
-  margin: 0px;
+footer .shop-infor .other-link .social-media i {
   color: white;
 }
 
-footer .shop-infor .shop-discript .content .contact {
-  margin-bottom: 20px;
+footer .shop-infor .other-link .credit-card {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2px 1px;
 }
 
-footer .shop-infor .shop-discript .content .contact p {
-  font-size: 24px;
-  margin: 0px;
-  color: white;
-  margin-bottom: 10px;
+footer .shop-infor .other-link .credit-card img {
+  width: 200px;
 }
 
-footer .shop-infor .shop-discript .content .social-icon i {
-  font-size: 54px;
-  color: white;
-}
-
-footer .shop-infor .shop-discript .content .social-icon i:not(:last-child) {
-  margin-right: 20px;
+footer .copyright {
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 footer .copyright p {
-  font-size: 24px;
-  color: #ebe6da;
+  font-size: 18px;
+  color: #b8b8b8;
 }
 /*# sourceMappingURL=index.css.map */
