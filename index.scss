@@ -4,9 +4,40 @@
     list-style: none;
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: 'cwTeXYen', sans-serif;    
     text-decoration: none;
+}
+//1500
+@mixin laptop-l{
+    @media (max-width:1500px) {
+        @content;
+    }
+}
+//1200
+@mixin laptop{
+    @media (max-width:1200px) {
+        @content;
+    }
+}
+//900
+@mixin tablet{
+    @media (max-width:900px) {
+        @content;
+    }
+}
+//768
+@mixin mobile{
+    @media (max-width:768px) {
+        @content;
+    }
+}
+//500
+@mixin phone{
+    @media (max-width:500px) {
+        @content;
+    }
 }
 //background change
 @mixin background-change{
@@ -23,6 +54,72 @@
         filter: brightness(1.07);
     }
 }
+.loader-wrapper{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    &.active{
+        opacity: 0;
+        transition: 1s;
+    }
+    .loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        animation: loader 2s infinite ease;
+        img{
+            width: 30%;
+        }
+        p{
+            font-size: 24px;
+            color: rgb(118,105,87);
+            span{
+                animation: dot-opacity 1s infinite;
+                &:nth-child(2){
+                    animation-delay: 100ms;
+                }
+                &:nth-child(3){
+                    animation-delay: 190ms;
+                }
+            }
+            @keyframes dot-opacity {
+                0% { opacity: 1; }
+                100% { opacity: 0; }
+            }
+        }
+      }
+      
+      @keyframes loader {
+        0% {
+          transform: translateY(2px);
+        }
+        
+        25% {
+           transform: translateY(-2px);
+        }
+        
+        50% {
+           transform: translateY(2px);
+        }
+        
+        75% {
+          transform: translateY(-2px);
+        }
+        
+        100% {
+          transform: translateY(2px);
+        }
+      }
+      
+}
 nav{
     .burger{
         position: fixed;
@@ -31,25 +128,44 @@ nav{
         z-index: 10;
         background-color: rgb(255, 255, 255);
         border-radius: 0px 0px 0px 15px;
-        box-shadow: 1px 4px 22px -2px rgba(0,0,0,0.7);
+        border-left: 5px solid rgb(118,105,87);
+        border-bottom: 5px solid rgb(118,105,87);
         cursor: pointer;
         transition: 1s;
+        @include phone(){
+            right: unset;
+            left:0px;
+            transition: 1s;
+            border-radius: 0px 0px 15px 0px;
+            border-left:none;
+            border-right: 2.5px solid rgb(118,105,87);
+            border-bottom: 2.5px solid rgb(118,105,87);
+        }
         &.active{
             transition: 1s;
+            border-color: rgb(27,155,147);
             p{
                 color: rgb(27,155,147);
             }
         }
+        &:hover{
+            .burger-img{
+                background-image: url(./img/logo-anim.gif);
+            }
+        }
         .burger-img{
-            width: 100px;
-            height: 60px;
-            padding: 5px 0px;
-            background-image: url(./img/new-logo.png);
+            width: 95px;
+            height: 67px;
+            background-image: url(./img/logo.png);
             background-size: 60%;
             background-repeat: no-repeat;
             background-position: center;
             &.active{
-                background-image: url(./img/new-logo2.png);
+                background-image: url(./img/logo2.png);
+            }
+            @include phone(){
+                width: 70px;
+                height: 50px;
             }
         }
         p{
@@ -59,13 +175,19 @@ nav{
             color: rgb(118,105,87);
             text-align: center;
             margin:3px 0px;
+            transition: 1s;
+            @include mobile(){
+                font-size: 14px;
+                margin:0px;
+                transition: 1s;
+            }
         }
     }
     .navbar{
         max-height: 956.25px;
         height: 85rem;
         width: 200px;
-        padding: 8rem 2.5rem;
+        padding: 8rem 1rem;
         position: fixed;
         top: 0px;
         right: 0px;
@@ -77,25 +199,67 @@ nav{
             background-color: white;
             opacity: 0.9;
         }
+        @include phone(){
+            max-height: unset;
+            height: unset;
+            width: 100vw;
+            right: 0px;
+            left: 0px;
+            transform: translateY(-100%);
+            padding: 5rem 0px 0px 1rem ;
+        }
         &.active{
             transform: translateX(0);
             transition: 1s;
+            @include phone(){
+                transform: translateY(0%);
+                transition: 1s;
+            }
         }
         ul{
+            max-width: 120px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 1s;
+            @include phone(){
+                max-width: 67px;
+                transition: 1s;
+            }
         li{
+            width: 100%;
             margin-bottom: 2rem;
+            transition: 1s;
+            @include phone(){
+                margin-bottom: 15px;
+                transition: 1s;
+            }
             a{
                 font-size: 32px;
                 color: rgb(94,96,82);  
+                transition: .5s;
+                @include phone(){
+                    font-size: 18px;
+                    transition: 1s;
+                }
+                &:hover{
+                    color: rgb(27,155,147);
+                    transition: .5s;
+                }
             }
             .social-icon{
                 position: relative;
-                i{
-                    margin-right: 20px;
-                    transition: .2s;
-                    &:hover{
-                        transform: scale(1.3);
+                display: flex;
+                justify-content: space-between;
+                a{
+                    
+                    i{
                         transition: .2s;
+                        &:hover{
+                            transform: scale(1.3);
+                            transition: .2s;
+                        }
                     }
                 }
                 &:before{
@@ -103,9 +267,15 @@ nav{
                     position: absolute;
                     top: -15px;
                     left: 0px;
-                    width: 140px;
+                    width: 120px;
                     height: 1px;
                     background-color: rgb(94,96,82);
+                    transition: 1s;
+                    @include phone(){
+                        top: -8px;
+                        width: 67px;
+                        transition: 1s;
+                    }
                 }
             }
         }
@@ -121,10 +291,21 @@ main{
         overflow: hidden;
         @include background-change(){
         background-color: rgb(235,230,218);
-        };
+        }
         // 橫幅
         .banner{
             height: 100vh;
+            .banner1{
+                @include phone(){
+                    display:none;
+                }
+            }
+            .banner2{
+                display: none;
+                @include phone(){
+                    display:block;
+                }
+            }
             img{
                 display: block;
                 width: 100%;
@@ -134,28 +315,95 @@ main{
         }
         // 品牌理念
         .brand-mind{
-            max-height: 956.25px;
-            height: 85rem;
+            padding:100px 0px;
             display: flex;
             align-items: center;
             position: relative;
+            @include tablet(){
+                padding:100px 1em 50px 1em;
+                flex-direction: column;
+            }
             .founder-img{
                 max-width: 1600px;
                 width: 50%;
+                @include tablet(){
+                    max-width: 600px;
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
+                &.fade-in{
+                    opacity: 0;
+                    transform: translateX(-100%);
+                    transition: all .8s ease-in-out;
+                    &.appear{
+                        opacity: 1;   
+                        transform: translateX(0%);
+                    }
+                }
                 img{
                     width: 100%;
                     border-radius: 0px 15px 15px 0px;
+                    @include tablet(){
+                        border-radius: 15px;
+                    }
                 }
             }
             .discript{
                 width: 710px;
                 margin: auto;
+                text-align: justify;
+                transition: 1s;
+                z-index: 2;
+                position: relative;
+                @include background-change(){
+                    background-color: rgb(235,230,218);
+                }
+                @include laptop-l(){
+                    width: 560px;
+                    transition: 1s;
+                }
+                @include laptop(){
+                    width: 410px;
+                    transition: 1s;
+                }
+                @include tablet(){
+                    max-width: 600px;
+                    width: 100%;
+                    transition: 1s;
+                }
+                &.fade-in{
+                    opacity: 0;
+                    transform: translateX(100%);
+                    transition: all .8s ease-in-out;
+                    &.appear{
+                        opacity: 1;   
+                        transform: translateX(0%);
+                    }
+                }
                 .title{
                     p{
                         font-size: 72px;
                         letter-spacing: 12px;
                         color: rgb(94,96,82);
                         margin-bottom: 30px;
+                        transition: 1s;
+                        @include laptop-l(){
+                            font-size: 54px;
+                            transition: 1s;
+                        }
+                        @include laptop(){
+                            font-size: 36px;
+                            margin-bottom: 20px;
+                            transition: 1s;
+                        }
+                        @include tablet(){
+                            text-align: center;
+                        }
+                        @include phone(){
+                            font-size: 28px;
+                            letter-spacing: 2px;
+                            transition: 1s;
+                        }
                         span{
                             color: rgb(27,155,147);
                         }
@@ -168,9 +416,25 @@ main{
                             line-height: 32px;
                             color: rgb(94,96,82);
                             margin:0px;
+                            transition: 1s;
+                            @include laptop(){
+                                font-size: 18px;
+                                line-height: 24px;
+                                transition: 1s;
+                            }
+                            @include phone(){
+                                font-size: 16px;
+                                line-height: 22px;
+                                transition: 1s;
+                            }
                         }
                         &:nth-child(1){
                             margin-bottom: 20px;
+                            transition: 1s;
+                            @include laptop(){
+                                margin-bottom: 10px;
+                                transition: 1s;
+                            }
                         }
                     }
                 }
@@ -178,61 +442,129 @@ main{
         }
         // 品牌理念二-員工
         .brand-mind-people{
-            max-height: 956.25px;
-            height: 85rem;
+            padding:100px 0px;
             display: flex;
             flex-direction: row-reverse;
             align-items: center;
+            @include tablet(){
+                padding:50px 1em;
+                flex-direction: column;
+            }
             .employee-img{
                 max-width: 1600px;
                 width: 50%;
                 position: relative;
+                @include tablet(){
+                    max-width: 600px;
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
                 img{
                     width: 100%;
                     border-radius: 15px 0px 0px 15px;
+                    @include tablet(){
+                        border-radius: 15px;
+                    }
+                    &.fade-in{
+                        opacity: 0;
+                        transform: translateX(100%);
+                        transition: all .8s ease-in-out;
+                        &.appear{
+                            opacity: 1;   
+                            transform: translateX(0%);
+                        }
+                    }
                 }
                 .ladder-img{
                     position: absolute;
-                    top: -24rem;
+                    top: -21.4rem;
                     right: 7rem;
                     z-index: 1;
+                    overflow: hidden;
+                    @include tablet(){
+                        display: none;
+                    }
+                    &.fade-in{
+                        height: 0px;
+                        transition:8s;
+                        &.appear{
+                            height: 350px;
+                            animation: ladder-appear 2s ease-in-out; 
+                        }
+                        @keyframes ladder-appear {
+                            0%{
+                                height: 0px;
+                            }
+                            100%{
+                                height: 350px;
+                            }
+                        }
+                    }
+                    img{
+                        height: 350px;
+                    }
                 } 
-                .ladder-people-img{
-                    position: absolute;
-                    top: -29rem;
-                    right: 6rem;
-                    z-index: 2;
-                    img{
-                        height: 250px;
-                    }
-                    .watering{
-                        width:80%;
-                        height: unset;
-                        position: absolute;
-                        top: 7rem;
-                        right: 7rem;
-                        z-index: -1; 
-                    }
-                }
-                .growth-gif{
-                    position: absolute;
-                    top: -18.5rem;
-                    right: 18rem;
-                    z-index: 2;
-                    img{
-                        height: 300px;
-                    }
-                }
             }
             .discript{
                 width: 710px;
                 margin: auto;
+                transition: 1s;
+                z-index: 2;
+                position: relative;
+                @include background-change(){
+                    background-color: rgb(235,230,218);
+                }
+                @include laptop-l(){
+                    width: 560px;
+                    transition: 1s;
+                }
+                @include laptop(){
+                    width: 410px;
+                    transition: 1s;
+                }
+                @include tablet(){
+                    max-width: 600px;
+                    width: 100%;
+                    transition: 1s;
+                }
+                &.fade-in{
+                    opacity: 0;
+                    transform: translateX(-100%);
+                    transition: all .8s ease-in-out;
+                    &.appear{
+                        opacity: 1;   
+                        transform: translateX(0%);
+                    }
+                }
                 .title{
                     p{
                         font-size: 72px;
                         color: rgb(94,96,82);
                         margin-bottom: 30px;
                         letter-spacing: 4.5px;
+                        transition: 1s;
+                        @include laptop-l(){
+                            font-size: 54px;
+                            transition: 1s;
+                        }
+                        @include laptop(){
+                            font-size: 36px;
+                            margin-bottom: 20px;
+                            letter-spacing: 7.5px;
+                            transition: 1s;
+                        }
+                        @include tablet(){
+                            max-width: 451px;
+                            width: 100%;
+                            text-align: center;
+                            margin: 0px auto 20px auto;
+                            letter-spacing: 8px;
+                        }
+                        @include phone(){
+                            font-size: 28px;
+                            letter-spacing: 2px;
+                            transition: 1s;
+                        }
                         span{
                             color: rgb(27,155,147);
                         }
@@ -246,6 +578,17 @@ main{
                             line-height: 32px;
                             color: rgb(94,96,82);
                             margin:0px;
+                            transition: 1s;
+                            @include laptop(){
+                                font-size: 18px;
+                                line-height: 24px;
+                                transition: 1s;
+                            }
+                            @include phone(){
+                                font-size: 16px;
+                                line-height: 22px;
+                                transition: 1s;
+                            }
                         }
                     }
                 }
@@ -253,87 +596,118 @@ main{
         }
         // 品牌理念三-產品
         .brand-mind-product{
-            max-height: 956.25px;
-            height: 85rem;
+            padding:100px 0px 200px 0px;
             display: flex;
             align-items: center;
+            @include tablet(){
+                padding:50px 1em 200px 1em;
+                flex-direction: column;
+            }
             .product-img{
                 max-width: 1600px;
                 width: 50%;
                 position: relative;
+                @include tablet(){
+                    max-width: 600px;
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
                 img{
                     width: 100%;
                     border-radius: 0px 15px 15px 0px;
+                    @include tablet(){
+                        border-radius: 15px;
+                    }
+                    &.fade-in{
+                        opacity: 0;
+                        transform: translateX(-100%);
+                        transition: all .8s ease-in-out;
+                        &.appear{
+                            opacity: 1;   
+                            transform: translateX(0%);
+                        }
+                    }
                 }
                 .ladder-img{
                     position: absolute;
-                    top: -24rem;
+                    top: -20rem;
                     left: 7rem;
                     z-index: 1;
-                }
-                .ladder-people-img{
-                    position: absolute;
-                    top: -17.5rem;
-                    left: 6rem;
-                    z-index: 2;
+                    overflow: hidden;
+                    @include tablet(){
+                        display: none;
+                    }
+                    &.fade-in{
+                        height: 0px;
+                        transition:8s;
+                        &.appear{
+                            height: 330px;
+                            animation: ladder-appear-2 2s ease-in-out; 
+                        }
+                        @keyframes ladder-appear-2 {
+                            0%{
+                                height: 0px;
+                            }
+                            100%{
+                                height: 330px;
+                            }
+                        }
+                    }
                     img{
-                        height: 250px;
-                        transform: scaleX(-1);
-                    }
-                    .crayon{
-                        width:35%;
-                        height: unset;
-                        position: absolute;
-                        top: 7rem;
-                        right: 2rem;
-                        transform: rotate(85deg);
-                        z-index: -1; 
+                        height: 330px;
                     }
                 }
-                .tribake-employee{
-                    position: absolute;
-                    top: -25.5rem;
-                    left: 22rem;
-                    z-index: 2;
-                    animation: people-move 10s infinite;
-                    img{
-                        width: 600px;
-                       
-                    }
-                    @keyframes people-move {
-                        0%{
-                            left: 21.5rem;
-                            transform: rotate(-1deg);
-                        }
-                        25%{
-                            left: 22.5rem;
-                            transform: rotate(1deg);
-                        }
-                        50%{
-                            left: 21.5rem;
-                            transform: rotate(-1deg);
-                        }
-                        75%{
-                            left: 22.5rem;
-                            transform: rotate(1deg);
-                        }
-                        100%{
-                            left: 21.5rem;
-                            transform: rotate(-1deg);
-                        }
-                        
-                    }
-                } 
             }
             .discript{
                 width: 710px;
                 margin: auto;
+                transition: 1s;
+                @include laptop-l(){
+                    width: 560px;
+                    transition: 1s;
+                }
+                @include laptop(){
+                    width: 410px;
+                    transition: 1s;
+                }
+                @include tablet(){
+                    max-width: 600px;
+                    width: 100%;
+                    transition: 1s;
+                }
+                &.fade-in{
+                    opacity: 0;
+                    transform: translateX(100%);
+                    transition: all .8s ease-in-out;
+                    &.appear{
+                        opacity: 1;   
+                        transform: translateX(0%);
+                    }
+                }
                 .title{
                     p{
                         font-size: 72px;                        
                         letter-spacing: 12px;
                         color: rgb(94,96,82);
                         margin-bottom: 30px;
+                        transition: 1s;
+                        @include laptop-l(){
+                            font-size: 54px;
+                            transition: 1s;
+                        }
+                        @include laptop(){
+                            font-size: 36px;
+                            margin-bottom: 20px;
+                            transition: 1s;
+                        }
+                        @include tablet(){
+                            text-align: center;
+                        }
+                        @include phone(){
+                            font-size:28px;
+                            letter-spacing: 2px;
+                            transition:1s;
+                        }
                         span{
                             color: rgb(27,155,147);
                         }
@@ -345,7 +719,19 @@ main{
                             font-size: 24px;
                             line-height: 32px;
                             color: rgb(94,96,82);
+                            text-align: justify;
                             margin:0px;
+                            transition: 1s;
+                            @include laptop(){
+                                font-size: 18px;
+                                line-height: 24px;
+                                transition: 1s;
+                            }
+                            @include phone(){
+                                font-size: 16px;
+                                line-height: 22px;
+                                transition: 1s;
+                            }
                         }
                         &:nth-child(1){
                             margin-bottom: 20px;
@@ -356,8 +742,6 @@ main{
         }
         // 最新消息
         .news{
-            max-height: 956.25px;
-            height: 85rem;
             padding: 100px 0px;
             background-color: rgb(255,255,255);
 
@@ -390,6 +774,11 @@ main{
                     font-size: 72px;
                     letter-spacing: 1.2px;
                     color: rgb(94,96,82);
+                    transition: 1s;
+                    @include mobile(){
+                        font-size: 54px;
+                        transition: 1s;
+                    }
                     span{
                         color: rgb(27,155,147);
                     }
@@ -410,6 +799,11 @@ main{
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    transition: 1s;
+                    @include mobile(){
+                        padding: 10px;
+                        transition: 1s;
+                    }
                     @include background-change(){
                         background-color: rgb(235,230,218);
                         border-radius: 15px;
@@ -422,19 +816,43 @@ main{
                         .news-img{
                             width: 150px;
                             height: 150px;
-                            margin-right: 20px;
+                            transition: 1s;
+                                @include phone(){
+                                    width: 100px;
+                                    height: 100px;
+                                    transition: 1s;
+                                }
                             img{
                                 height: 100%;
                                 width: 100%;
                                 object-fit: cover;
+                                transition: 1s;
+                                @include phone(){
+                                    width: 100px;
+                                    height: 100px;
+                                    transition: 1s;
+                                }
                             }
                         }
                         .text{
+                            margin-left: 20px;
                             .subtitle{
                                 display: flex;
                                 margin-bottom: 20px;
                                 p{
                                     font-size: 18px;
+                                    line-height: 18px;
+                                    transition: 1s;
+                                    @include mobile(){
+                                        font-size: 14px;
+                                        line-height: 14px;
+                                        transition: 1s;
+                                    }
+                                    @include phone(){
+                                        font-size: 12px;
+                                        line-height: 12px;
+                                        transition: 1s;
+                                    }
                                     &:nth-child(1){
                                         color: rgb(94,96,82);
                                         font-family: 'Nunito', sans-serif;
@@ -443,8 +861,8 @@ main{
                                     &:nth-child(2){
                                         color: white;
                                         margin: 0px;
-                                        border-radius: 5px;
-                                        padding: 5px 3px;
+                                        border-radius: 3px;
+                                        
                                         &:hover{
                                             filter: brightness(1.2);
                                         }
@@ -464,6 +882,15 @@ main{
                                 p{
                                     font-size: 32px;
                                     color: rgb(94,96,82);
+                                    transition: 1s;
+                                    @include mobile(){
+                                        font-size: 24px;
+                                        transition: 1s;
+                                    }
+                                    @include phone(){
+                                        font-size: 18px;
+                                        transition: 1s;
+                                    }
                                 }
                             }
                         }
@@ -474,6 +901,11 @@ main{
                             color: rgb(94,96,82);
                             position: relative;
                             cursor: pointer;
+                            transition: 1s;
+                            @include mobile(){
+                                font-size: 24px;
+                                transition: 1s;
+                            }
                             &:hover{
                                 color: rgb(27,155,147);
                             }
@@ -484,9 +916,7 @@ main{
         }
         // 商品介紹
         .product-sale{
-            max-height: 956.25px;
-            height: 85rem;
-            padding: 100px 0px;
+            padding: 100px 1em 200px 1em;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -497,12 +927,22 @@ main{
                 flex-direction: column;
                 align-items: center;
                 margin-bottom: 150px;
+                transition: 1s;
+                @include mobile(){
+                    margin-bottom: 75px;
+                    transition: 1s;
+                }
                 .title{
                     margin-bottom: 20px;
                     p{
                         font-size: 72px;
                         letter-spacing: 1.2px;
                         color: rgb(94,96,82);
+                        transition: 1s;
+                        @include mobile(){
+                            font-size: 54px;
+                            transition: 1s;
+                        }
                         span{
                             color: rgb(27,155,147);
                         }
@@ -512,17 +952,30 @@ main{
                     max-width: 820px;
                     width: 100%;
                     padding: 20px;
+                    text-align: justify;
                     position: relative;
-                    z-index: 1; 
+                    z-index: 1;
+                    transition: 1s;
                     @include background-change(){
                         background-color: rgb(235,230,218);
                         border-radius: 15px;
+                    }
+                    @include mobile(){
+                        max-width: 620px;
+                        padding: 15px;
+                        transition: 1s;
                     }
                     p{
                         margin: 0px;
                         font-size: 24px;
                         line-height: 28px;
                         color: rgb(94,96,82);
+                        transition: 1s;
+                        @include mobile(){
+                            font-size: 18px;
+                            line-height: 20px;
+                            transition: 1s;
+                        }
                     }
                 }
             }
@@ -532,6 +985,11 @@ main{
                 height: 100%;
                 display: flex;
                 justify-content: space-around;
+                @include mobile(){
+                    flex-direction: column;
+                    justify-content: unset;
+                    align-items: center;
+                }
                 .product-box{
                     width: 350px;
                     height: 350px;
@@ -539,6 +997,24 @@ main{
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    transition: 1s;
+                    @include laptop(){
+                        width: 280px;
+                        height: 280px;
+                        transition: 1s;
+                    }
+                    @include tablet(){
+                        width: 230px;
+                        height: 230px;
+                        transition: 1s;
+                    }
+                    @include mobile(){
+                        transition: 1s;
+                        &:not(:last-child){
+                            margin-bottom: 30px;
+                            transition: 1s;
+                        }
+                    }
                     &:nth-child(1){
                         .flip-box-inner{
                             .flip-box-front {
@@ -574,6 +1050,18 @@ main{
                                     background-color: rgb(230, 217, 211);
                                     border-radius: 15px;
                                 }
+                                .box-in{
+                                    .product-menu{
+                                        .menu{
+                                           p{
+                                               @include tablet(){
+                                                   font-size: 16px;
+                                                   transition: 1s;
+                                               }
+                                           } 
+                                        }
+                                    }
+                                }
                                 .box-outside{
                                     @include background-change(){
                                         background-color: rgb(230, 217, 211);
@@ -592,6 +1080,9 @@ main{
                                 }
                                 img{
                                     height: 225px;
+                                    @include laptop(){
+                                        height: 175px;
+                                    }
                                 }
                             }
                              .flip-box-back{
@@ -638,6 +1129,15 @@ main{
                             img{
                                 height: 250px;
                                 margin: auto;
+                                transition: 1s;
+                                @include laptop(){
+                                    height: 200px;
+                                    transition: 1s;
+                                }
+                                @include tablet(){
+                                    height: 150px;
+                                    transition: 1s;
+                                }
                             }
                         }
                         .flip-box-back {
@@ -666,6 +1166,15 @@ main{
                                             font-size: 60px;
                                             color: rgb(94,96,82);
                                             margin: auto;
+                                            transition: 1s;
+                                            @include laptop(){
+                                                font-size: 48px;
+                                                transition: 1s;
+                                            }
+                                            @include tablet(){
+                                                font-size: 36px;
+                                                transition: 1s;
+                                            }
                                         }
                                     }
                                     .product-intro{
@@ -674,6 +1183,15 @@ main{
                                             font-size: 18px;
                                             line-height: 22px;
                                             color: rgb(94,96,82);
+                                            transition: 1s;
+                                            @include laptop(){
+                                                font-size: 16px;
+                                                transition: 1s;
+                                            }
+                                            @include tablet(){
+                                                font-size: 14px;
+                                                transition: 1s;
+                                            }
                                         }
                                     }
                                 }
@@ -699,14 +1217,27 @@ main{
                                         align-items: flex-end;
                                         &:not(:last-child){
                                             margin-bottom: 20px;
+                                            transition: 1s;
+                                            @include tablet(){
+                                                margin-bottom: 10px;
+                                                transition: 1s;
+                                            }
                                         }
                                         &:nth-child(3){
                                             margin-bottom: 30px;
+                                            transition: 1s;
+                                            @include tablet(){
+                                                margin-bottom: 15px;
+                                                transition: 1s;
+                                            }
                                         }
                                         p{
                                             margin: 0px;
                                             font-size: 24px;
                                             color: rgb(94,96,82);
+                                            @include laptop(){
+                                                font-size: 18px;
+                                            }
                                             &:nth-child(1){
                                                 display: flex;
                                                 flex-direction: column;
@@ -721,6 +1252,11 @@ main{
                                                     margin-bottom: 5px;
                                                     color: white;
                                                     width: 86px;
+                                                    transition: 1s;
+                                                    @include laptop(){
+                                                        font-size: 12px;
+                                                        transition: 1s;
+                                                    }
                                                 }
                                             }
                                             span{
@@ -742,6 +1278,14 @@ main{
                                         cursor: pointer;
                                         line-height: 45px;
                                         margin: 0px auto;
+                                        transition: 1s;
+                                        @include laptop(){
+                                            width: 100px;
+                                            height: 35px;
+                                            font-size: 18px;
+                                            line-height: 35px;
+                                            transition: 1s;
+                                        }
                                     }
                                 } 
                             }
@@ -755,6 +1299,9 @@ main{
                                     position: relative;
                                     cursor: pointer;
                                     animation: icon-move 2.5s ease-in-out infinite;
+                                    @include tablet(){
+                                        animation: icon-move-2 2.5s ease-in-out infinite;
+                                    }
                                 }
                                 @keyframes icon-move {
                                     0%{
@@ -768,6 +1315,23 @@ main{
                                     }
                                     75%{
                                         top: 10px;
+                                    }
+                                    100%{
+                                        top: 0px;
+                                    }
+                                }
+                                @keyframes icon-move-2 {
+                                    0%{
+                                        top: 0px;
+                                    }
+                                    25%{
+                                        top: 5px;
+                                    }
+                                    50%{
+                                        top: 0px;
+                                    }
+                                    75%{
+                                        top: 5px;
                                     }
                                     100%{
                                         top: 0px;
@@ -798,8 +1362,17 @@ main{
                                 transform: translateY(-50px);
                                 transition: all .6s linear;
                                 opacity: 0;
+                                @include laptop(){
+                                    width: 280px;
+                                }
+                                @include tablet(){
+                                    width: 230px;
+                                }
                                 &.active{
                                     display: flex;
+                                    @include mobile(){
+                                        display: none;
+                                    }
                                  }
                                 &.hidden{
                                      opacity: 1;
@@ -811,6 +1384,15 @@ main{
                                         font-size: 60px;
                                         color: rgb(94,96,82);
                                         margin: auto;
+                                        transition: 1s;
+                                        @include laptop(){
+                                            font-size: 48px;
+                                            transition: 1s;
+                                        }
+                                        @include tablet(){
+                                            font-size: 36px;
+                                            transition: 1s;
+                                        }   
                                     }
                                 }
                                 .product-intro{
@@ -819,6 +1401,16 @@ main{
                                         font-size: 18px;
                                         line-height: 22px;
                                         color: rgb(94,96,82);
+                                        transition: 1s;
+                                        @include laptop(){
+                                            font-size: 16px;
+                                            transition: 1s;
+                                        }
+                                        @include tablet(){
+                                            max-width: 200px;
+                                            font-size: 14px;
+                                            transition: 1s;
+                                        }
                                     }
                                 }
                             }
@@ -837,9 +1429,7 @@ main{
         }
         // 合作夥伴
         .cooperation{
-            max-height: 956.25px;
-            height: 85rem;
-            padding: 100px 0px;
+            padding: 100px 1em;
 
             display: flex;
             flex-direction: column;
@@ -855,6 +1445,11 @@ main{
                         font-size: 72px;
                         letter-spacing: 1.2px;
                         color: rgb(94,96,82);
+                        transition: 1s;
+                        @include mobile(){
+                            font-size: 54px;
+                            transition: 1s;
+                        }
                         span{
                             color: rgb(27,155,147);
                         }
@@ -874,6 +1469,12 @@ main{
                                 font-size: 24px;
                                 line-height: 28px;
                                 color: rgb(94,96,82);
+                                transition: 1s;
+                                @include mobile(){
+                                    font-size: 18px;
+                                    line-height: 20px;
+                                    transition: 1s;
+                                }
                             }
                             @include background-change(){
                                 background-color: rgb(202, 202, 202);
@@ -892,9 +1493,15 @@ main{
                         padding: 20px;
                         position: relative;
                         z-index: 1; 
+                        transition: 1s;
                         @include background-change(){
                             background-color: rgb(255,255,255);
                             border-radius: 0px 15px 15px 15px;
+                        }
+                        @include mobile(){
+                            max-width: 620px;
+                            padding: 15px;
+                            transition: 1s;
                         }
                         p{
                             margin: 0px;
@@ -902,6 +1509,12 @@ main{
                             line-height: 28px;
                             color: rgb(94,96,82);
                             text-align: justify;
+                            transition: 1s;
+                            @include mobile(){
+                                font-size: 18px;
+                                line-height: 20px;
+                                transition: 1s;
+                            }
                             span{
                                 cursor: pointer;
                                 color: rgb(27,155,147);
@@ -924,30 +1537,44 @@ main{
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
+                transition: 1s;
+                @include tablet(){
+                    padding: 50px 0px 0px 0px;
+                }
                 .collaborator{
                     width: 270px;
                     margin-bottom: 40px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    transition: 1s;
+                    @include laptop-l(){
+                        transition: 1s;
+                        width: 230px;
+                    }
+                    @include mobile(){
+                        transition: 1s;
+                        width: 190px;
+                    }
                     &.npo-img{
                         &.active{
-                            img{
-                                filter: brightness(0.8);
-                            }
+                            display: none;
                         }
                     }
                     &.farmer-group-img{
                         &.active{
-                            img{
-                                filter: brightness(0.8);
-                            }
+                            display: none;
                         }
                     }
                     img{
                         height: 150px;
                         border-radius: 50%;
                         margin-bottom: 10px;
+                        transition: 1s;
+                        @include mobile(){
+                            height: 100px;
+                            transition: 1s;
+                        }
                     }
                     .name{
                         // width: 100px;
@@ -955,6 +1582,11 @@ main{
                             margin: 0px;
                             font-size: 24px;
                             text-align: center;
+                            transition: 1s;
+                            @include mobile(){
+                                font-size: 18px;
+                                transition: 1s;
+                            }
                         }
                     }
                 }
@@ -962,19 +1594,35 @@ main{
         }
         // 店面照片
         .shop-img{
-            max-height: 956.25px;
-            height: 85rem;
+            height: 100vh;
             background-image: url(./img/tribake-shop.jpg);
             background-repeat: no-repeat;
             background-attachment: fixed; 
             background-position: center center;
             background-size: cover;
-
+            
             display: flex;
             align-items: center;
             justify-content: center; 
+            .shop-logo{
+                display: flex;
+                align-items: center;
+                justify-content: center; 
+                img{
+                    transition: 1s;
+                    @include mobile(){
+                        width: 75%;
+                        transition: 1s;
+                    }
+                    @include phone(){
+                        width: 50%;
+                        transition: 1s;
+                    }
+                }
+            }
         }
-    }  
+    }
+    
 }
 footer{
     max-width: 1920px;
@@ -982,32 +1630,48 @@ footer{
     padding: 50px 50px 0px 50px;
     display: flex;
     flex-direction: column;
-    
+    transition: 1s;
     position: relative;
     @include background-change(){
         background-color: rgb(94,96,82);
-    };
+    } 
+    @include tablet(){
+        padding: 50px 25px 0px 25px;
+        transition: 1s;
+    }
+    
     .shop-infor{
         display: flex;
         justify-content: space-around;
         align-items: center;
+        transition: 1s;
+        @include phone(){
+            flex-direction: column;
+            transition: 1s;
+        }
         .shop-detail-infor{
-            display: flex;
-            .logo-img{
-                margin-right: 5rem;
-                img{
-                    height: 215px;
-                }
+            transition: 1s;
+            @include tablet(){
+                flex-direction: column;
+            }
+            @include phone(){
+                margin-bottom: 20px;
+                transition: 1s;
             }
             .shop-discript{
-                display: flex; 
                 .content{
                     .title{
                         margin-bottom: 20px;
+                        
                         p{
                             font-size: 54px;
                             margin: 0px;
                             color: rgb(255,255,255);
+                            transition: 1s;
+                            @include tablet(){
+                                font-size: 36px;
+                                transition: 1s;
+                            }
                         }
                     }
                     .contact{
@@ -1015,6 +1679,11 @@ footer{
                             font-size: 24px;
                             margin: 0px;
                             color: rgb(255,255,255);
+                            transition: 1s;
+                            @include tablet(){
+                                font-size: 18px;
+                                transition: 1s;
+                            }
                             &:not(:last-child){
                                 margin-bottom: 10px;
                             }
@@ -1029,6 +1698,12 @@ footer{
             flex-direction: column;
             justify-content: space-between;
             font-size: 24px;
+            transition: 1s;
+            @include tablet(){
+                height: 166px;
+                font-size: 18px;
+                transition: 1s;
+            }
             .map{
                 width: 200px;
                 height: 50px;
@@ -1038,6 +1713,12 @@ footer{
                 position: relative;
                 border: 3px solid white;
                 border-radius: 10px;
+                transition: 1s;
+                @include tablet(){
+                    width: 150px;
+                    height: 40px;
+                    transition: 1s;
+                }
                 p{
                     color: white;
                 }
@@ -1055,6 +1736,12 @@ footer{
                 position: relative;
                 border: 3px solid white;
                 border-radius: 10px;
+                transition: 1s;
+                    @include tablet(){
+                        width: 150px;
+                        height: 40px;
+                        transition: 1s;
+                    }
                 i{
                     color: white;
                     transition: .2s;
@@ -1072,6 +1759,11 @@ footer{
                 padding: 2px 1px;
                 img{
                     width: 200px;
+                    transition: 1s;
+                    @include tablet(){
+                        width: 150px;
+                        transition: 1s;
+                    }
                 }
             }
         }
@@ -1084,7 +1776,13 @@ footer{
         p{
             font-size: 18px;
             color: rgb(184, 184, 184);
+            transition: 1s;
+            @include phone(){
+                font-size: 14px;
+                transition: 1s;
+            }
         }
     }
     
 }
+

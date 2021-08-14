@@ -1,5 +1,5 @@
-// swiper
-var swiper = new Swiper(".mySwiper", {});
+// wow
+new WOW().init();
 
 //視差效果
 document.addEventListener("mousemove",parallax);
@@ -84,13 +84,13 @@ function openTab(evt, tabName) {
     var t = e.target;
     t.classList.toggle('active');
     let it = Array.from(iconBtn).indexOf(event.target)
-    console.log(it);
+
     
     if (productAll[it].classList.contains('active')) {
             productAll[it].classList.remove('active');
             productMenu[it].classList.remove('active');  
             boxOut[it].classList.remove('active');  
-            console.log(productAll[it]);
+
             setTimeout(function () {
               productAll[it].classList.remove('hidden');
               productMenu[it].classList.remove('hidden');
@@ -125,4 +125,51 @@ function openTab(evt, tabName) {
     navbar.classList.toggle('active');
   })
 
+  //laoding 效果
+  // let loading= document.querySelector('.loader-wrapper');
+  // window.addEventListener('load',function(){
+    
+  //   let promise = new Promise((resolve)=>{
+  //     window.setTimeout(function(){
+  //       loading.classList.add('active');
+  //       return resolve();
+  //     },2500)    
+  //   })
+
+  //   promise.then(()=>{
+  //     window.setTimeout(function(){
+  //       loading.parentElement.removeChild(loading);
+  //     },500)       
+  //   });
+    
+  // })
+
+  //視窗滾動效果
+  const faders = document.querySelectorAll('.fade-in');
+  const silders = document.querySelectorAll('.slide-in')
+  const appearOptions= {
+    threshold:0,
+    rootMargin: "0px 0px 50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver (function(entries,appearOnScroll){
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting){
+        return;
+      }else{
+        entry.target.classList.add("appear");
+        appearOnScroll.unobserve(entry.target);
+      }
+    });
+  },
+  appearOptions);
+
+  faders.forEach(fader =>{
+    appearOnScroll.observe(fader);
+  });
+  silders.forEach(slider=>{
+    appearOnScroll.observe(slider);
+  });
+
+ 
   
