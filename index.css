@@ -36,7 +36,7 @@
   transition: 1s;
 }
 
-.loader-wrapper .loader {
+.loader-wrapper .loader .loading-img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,32 +50,45 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.loader-wrapper .loader .loading-img:nth-child(1) img {
+  width: 30%;
+  margin-bottom: 10px;
   -webkit-animation: loader 2s infinite ease;
           animation: loader 2s infinite ease;
 }
 
-.loader-wrapper .loader img {
-  width: 30%;
+.loader-wrapper .loader .loading-img:nth-child(2) img {
+  width: 60%;
+  -webkit-animation: loader-2 5s infinite ease;
+          animation: loader-2 5s infinite ease;
 }
 
-.loader-wrapper .loader p {
+.loader-wrapper .loader .loading-img p {
   font-size: 24px;
   color: #766957;
 }
 
-.loader-wrapper .loader p span {
+@media (max-width: 768px) {
+  .loader-wrapper .loader .loading-img p {
+    font-size: 18px;
+  }
+}
+
+.loader-wrapper .loader .loading-img p span {
   -webkit-animation: dot-opacity 1s infinite;
           animation: dot-opacity 1s infinite;
 }
 
-.loader-wrapper .loader p span:nth-child(2) {
-  -webkit-animation-delay: 100ms;
-          animation-delay: 100ms;
+.loader-wrapper .loader .loading-img p span:nth-child(2) {
+  -webkit-animation-delay: 150ms;
+          animation-delay: 150ms;
 }
 
-.loader-wrapper .loader p span:nth-child(3) {
-  -webkit-animation-delay: 190ms;
-          animation-delay: 190ms;
+.loader-wrapper .loader .loading-img p span:nth-child(3) {
+  -webkit-animation-delay: 240ms;
+          animation-delay: 240ms;
 }
 
 @-webkit-keyframes dot-opacity {
@@ -139,6 +152,52 @@
   100% {
     -webkit-transform: translateY(2px);
             transform: translateY(2px);
+  }
+}
+
+@-webkit-keyframes loader-2 {
+  0% {
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+  25% {
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  50% {
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+  75% {
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  100% {
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+}
+
+@keyframes loader-2 {
+  0% {
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+  25% {
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  50% {
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+  75% {
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  100% {
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
   }
 }
 
@@ -1152,16 +1211,68 @@ main .main-container .news .cloudy-img .cloudy {
 main .main-container .news .cloudy-img .cloudy.first {
   top: -125px;
   left: -20px;
+  -webkit-animation: cloud-move 8s infinite;
+          animation: cloud-move 8s infinite;
 }
 
 main .main-container .news .cloudy-img .cloudy.second {
   top: -135px;
   left: -20px;
+  -webkit-animation: cloud-move 6s infinite;
+          animation: cloud-move 6s infinite;
 }
 
 main .main-container .news .cloudy-img .cloudy.third {
   top: -135px;
   left: -20px;
+  -webkit-animation: cloud-move 4s infinite;
+          animation: cloud-move 4s infinite;
+}
+
+@-webkit-keyframes cloud-move {
+  0% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  25% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  50% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  75% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  100% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+}
+
+@keyframes cloud-move {
+  0% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  25% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  50% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  75% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  100% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
 }
 
 main .main-container .news .title {
@@ -1247,6 +1358,20 @@ main .main-container .news .content .news-detail:before {
 
 main .main-container .news .content .news-detail:not(:last-child) {
   margin-bottom: 50px;
+}
+
+main .main-container .news .content .news-detail.fade-in {
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: all .8s ease-in-out;
+  transition: all .8s ease-in-out;
+}
+
+main .main-container .news .content .news-detail.fade-in.appear {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 main .main-container .news .content .news-detail .left-infro {
@@ -1515,6 +1640,16 @@ main .main-container .product-sale .discript .content p {
   }
 }
 
+main .main-container .product-sale .discript .content.fade-in {
+  opacity: 0;
+  -webkit-transition: all 1.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
+}
+
+main .main-container .product-sale .discript .content.fade-in.appear {
+  opacity: 1;
+}
+
 main .main-container .product-sale .product-content {
   max-width: 1350px;
   width: 100%;
@@ -1556,6 +1691,20 @@ main .main-container .product-sale .product-content .product-box {
           justify-content: center;
   -webkit-transition: 1s;
   transition: 1s;
+}
+
+main .main-container .product-sale .product-content .product-box.fade-in {
+  opacity: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: all 1.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
+}
+
+main .main-container .product-sale .product-content .product-box.fade-in.appear {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 @media (max-width: 1200px) {
@@ -1759,6 +1908,11 @@ main .main-container .product-sale .product-content .product-box .flip-box-inner
   transition: transform 0.8s, -webkit-transform 0.8s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+}
+
+main .main-container .product-sale .product-content .product-box .flip-box-inner.active {
+  -webkit-transform: rotateY(-180deg) translateZ(1px);
+          transform: rotateY(-180deg) translateZ(1px);
 }
 
 main .main-container .product-sale .product-content .product-box .flip-box-inner .flip-box-front, main .main-container .product-sale .product-content .product-box .flip-box-inner .flip-box-back {
@@ -2458,6 +2612,16 @@ main .main-container .cooperation .discript .content .detail-content .tabcontent
   display: none;
 }
 
+main .main-container .cooperation .discript .content.fade-in {
+  opacity: 0;
+  -webkit-transition: all .8s ease-in-out;
+  transition: all .8s ease-in-out;
+}
+
+main .main-container .cooperation .discript .content.fade-in.appear {
+  opacity: 1;
+}
+
 main .main-container .cooperation .collaborator-container {
   max-width: 1350px;
   width: 100%;
@@ -2473,6 +2637,16 @@ main .main-container .cooperation .collaborator-container {
           justify-content: center;
   -webkit-transition: 1s;
   transition: 1s;
+}
+
+main .main-container .cooperation .collaborator-container.fade-in {
+  opacity: 0;
+  -webkit-transition: all .8s ease-in-out;
+  transition: all .8s ease-in-out;
+}
+
+main .main-container .cooperation .collaborator-container.fade-in.appear {
+  opacity: 1;
 }
 
 @media (max-width: 900px) {
@@ -2582,6 +2756,16 @@ main .main-container .shop-img .shop-logo {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+main .main-container .shop-img .shop-logo.fade-in {
+  opacity: 0;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+main .main-container .shop-img .shop-logo.fade-in.appear {
+  opacity: 1;
 }
 
 main .main-container .shop-img .shop-logo img {

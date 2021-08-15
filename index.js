@@ -74,6 +74,7 @@ function openTab(evt, tabName) {
   let productAll = Array.from(document.querySelectorAll('.product-all'));
   let productMenu =Array.from(document.querySelectorAll('.product-menu'));
   let boxOut = Array.from(document.querySelectorAll('.box-outside')); 
+  let flipBox =  Array.from(document.querySelectorAll('.flip-box-inner')); 
   
   for (var i = 0; i < iconBtn.length; i++) {
     iconBtn[i].addEventListener('click', function (e) {
@@ -89,7 +90,8 @@ function openTab(evt, tabName) {
     if (productAll[it].classList.contains('active')) {
             productAll[it].classList.remove('active');
             productMenu[it].classList.remove('active');  
-            boxOut[it].classList.remove('active');  
+            boxOut[it].classList.remove('active'); 
+            flipBox[it].classList.remove('active');  
 
             setTimeout(function () {
               productAll[it].classList.remove('hidden');
@@ -101,10 +103,12 @@ function openTab(evt, tabName) {
             productAll[it].classList.add('hidden');
             productMenu[it].classList.add('active');
             boxOut[it].classList.add('active');
+            
             productAll[it].addEventListener('transitionend', function(e) {
               productAll[it].classList.add('active');
               productMenu[it].classList.add('hidden');  
-              boxOut[it].classList.add('hidden');  
+              boxOut[it].classList.add('hidden');
+              flipBox[it].classList.add('active');  
               
             }, {
               capture: false,
@@ -126,27 +130,29 @@ function openTab(evt, tabName) {
   })
 
   //laoding 效果
-  // let loading= document.querySelector('.loader-wrapper');
-  // window.addEventListener('load',function(){
-    
-  //   let promise = new Promise((resolve)=>{
-  //     window.setTimeout(function(){
-  //       loading.classList.add('active');
-  //       return resolve();
-  //     },2500)    
-  //   })
+  let loading= document.querySelector('.loader-wrapper');
+  
+  var random = Math.floor(Math.random() * $('.loading-img').length);
+  $('.loading-img').hide().eq(random).show();
+  
+  window.addEventListener('load',function(){
+    let promise = new Promise((resolve)=>{
+      window.setTimeout(function(){
+        loading.classList.add('active');
+        return resolve();
+      },2500)    
+    })
 
-  //   promise.then(()=>{
-  //     window.setTimeout(function(){
-  //       loading.parentElement.removeChild(loading);
-  //     },500)       
-  //   });
+    promise.then(()=>{
+      window.setTimeout(function(){
+        loading.parentElement.removeChild(loading);
+      },500)       
+    });
     
-  // })
+  })
 
   //視窗滾動效果
   const faders = document.querySelectorAll('.fade-in');
-  const silders = document.querySelectorAll('.slide-in')
   const appearOptions= {
     threshold:0,
     rootMargin: "0px 0px 50px 0px"
@@ -166,9 +172,6 @@ function openTab(evt, tabName) {
 
   faders.forEach(fader =>{
     appearOnScroll.observe(fader);
-  });
-  silders.forEach(slider=>{
-    appearOnScroll.observe(slider);
   });
 
  

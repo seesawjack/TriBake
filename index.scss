@@ -70,31 +70,46 @@
         transition: 1s;
     }
     .loader {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        animation: loader 2s infinite ease;
-        img{
-            width: 30%;
-        }
-        p{
-            font-size: 24px;
-            color: rgb(118,105,87);
-            span{
-                animation: dot-opacity 1s infinite;
-                &:nth-child(2){
-                    animation-delay: 100ms;
-                }
-                &:nth-child(3){
-                    animation-delay: 190ms;
+        .loading-img{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            &:nth-child(1){  
+                img{
+                    width: 30%;
+                    margin-bottom: 10px;
+                    animation: loader 2s infinite ease;
                 }
             }
-            @keyframes dot-opacity {
-                0% { opacity: 1; }
-                100% { opacity: 0; }
+            &:nth-child(2){
+                img{
+                    width: 60%;
+                    animation: loader-2 5s infinite ease;
+                }
+            }
+            p{
+                font-size: 24px;
+                color: rgb(118,105,87);
+                @include mobile(){
+                    font-size: 18px;
+                }
+                span{
+                    animation: dot-opacity 1s infinite;
+                    &:nth-child(2){
+                        animation-delay: 150ms;
+                    }
+                    &:nth-child(3){
+                        animation-delay: 240ms;
+                    }
+                }
+                @keyframes dot-opacity {
+                    0% { opacity: 1; }
+                    100% { opacity: 0; }
+                }
             }
         }
+       
       }
       
       @keyframes loader {
@@ -116,6 +131,27 @@
         
         100% {
           transform: translateY(2px);
+        }
+      }
+      @keyframes loader-2 {
+        0% {
+          transform: rotate(1deg);
+        }
+        
+        25% {
+           transform: rotate(-1deg);
+        }
+        
+        50% {
+           transform: rotate(1deg);
+        }
+        
+        75% {
+          transform: rotate(-1deg);
+        }
+        
+        100% {
+          transform: rotate(1deg);
         }
       }
       
@@ -756,14 +792,38 @@ main{
                   &.first{
                      top: -125px;
                      left: -20px; 
+                     animation: cloud-move 8s infinite;
                   }
                   &.second{
                     top: -135px;
                     left: -20px; 
+                    animation: cloud-move 6s infinite;
                   }
                   &.third{
                     top: -135px;
                     left: -20px; 
+                    animation: cloud-move 4s infinite;
+                  }
+                  @keyframes cloud-move {
+                    0% {
+                      transform: translateX(0px);
+                    }
+                    
+                    25% {
+                       transform: translateX(-5px);
+                    }
+                    
+                    50% {
+                       transform: translateX(5px);
+                    }
+                    
+                    75% {
+                      transform: translateX(-5px);
+                    }
+                    
+                    100% {
+                      transform: translateX(5px);
+                    }
                   }
                 }
             }
@@ -810,6 +870,15 @@ main{
                     }
                     &:not(:last-child){
                         margin-bottom: 50px;
+                    }
+                    &.fade-in{
+                        opacity: 0;
+                        transform: translateY(100%);
+                        transition: all .8s ease-in-out;
+                        &.appear{
+                            opacity: 1;   
+                            transform: translateY(0%);
+                        }
                     }
                     .left-infro{
                         display: flex;
@@ -977,6 +1046,13 @@ main{
                             transition: 1s;
                         }
                     }
+                    &.fade-in{
+                        opacity: 0;
+                        transition: all 1.5s ease-in-out;
+                        &.appear{
+                            opacity: 1;   
+                        }
+                    }
                 }
             }
             .product-content{
@@ -998,6 +1074,15 @@ main{
                     align-items: center;
                     justify-content: center;
                     transition: 1s;
+                    &.fade-in{
+                        opacity: 0;
+                        transform: translateY(-100%);
+                        transition: all 1.5s ease-in-out;
+                        &.appear{
+                            opacity: 1;   
+                            transform: translateY(0%);
+                        }
+                    }
                     @include laptop(){
                         width: 280px;
                         height: 280px;
@@ -1112,7 +1197,9 @@ main{
                         text-align: center;
                         transition: transform 0.8s;
                         transform-style: preserve-3d;
-                        // transform: rotateY(-180deg) translateZ(1px);
+                        &.active{
+                            transform: rotateY(-180deg) translateZ(1px);
+                        }
                         .flip-box-front, .flip-box-back {
                             position: absolute;
                             width: 100%;
@@ -1526,6 +1613,13 @@ main{
                            }
                        }
                     }
+                    &.fade-in{
+                        opacity: 0;
+                        transition: all .8s ease-in-out;
+                        &.appear{
+                            opacity: 1;   
+                        }
+                    }
                    
                 }
             }
@@ -1538,6 +1632,13 @@ main{
                 flex-wrap: wrap;
                 justify-content: center;
                 transition: 1s;
+                &.fade-in{
+                    opacity: 0;
+                    transition: all .8s ease-in-out;
+                    &.appear{
+                        opacity: 1;   
+                    }
+                }
                 @include tablet(){
                     padding: 50px 0px 0px 0px;
                 }
@@ -1608,6 +1709,13 @@ main{
                 display: flex;
                 align-items: center;
                 justify-content: center; 
+                &.fade-in{
+                    opacity: 0;
+                    transition: all 1s ease-in-out;
+                    &.appear{
+                        opacity: 1;   
+                    }
+                }
                 img{
                     transition: 1s;
                     @include mobile(){
