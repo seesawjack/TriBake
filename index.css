@@ -2838,10 +2838,15 @@ main .main-container .shop-img {
           justify-content: center;
 }
 
+@media (max-width: 1200px) {
+  main .main-container .shop-img {
+    background-attachment: unset;
+  }
+}
+
 @media (max-width: 768px) {
   main .main-container .shop-img {
     background-image: url(./img/tribake-shop-2.jpg.png);
-    background-attachment: unset;
   }
 }
 

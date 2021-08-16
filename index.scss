@@ -1775,9 +1775,11 @@ main{
             display: flex;
             align-items: center;
             justify-content: center; 
+            @include laptop(){
+                background-attachment: unset;
+            }
             @include mobile(){
                 background-image: url(./img/tribake-shop-2.jpg.png);
-                background-attachment: unset;
             }
             .shop-logo{
                 display: flex;
