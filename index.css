@@ -283,8 +283,7 @@ nav .burger p {
 }
 
 nav .navbar {
-  max-height: 956.25px;
-  height: 85rem;
+  height: 100vh;
   width: 200px;
   padding: 8rem 1rem;
   position: fixed;
