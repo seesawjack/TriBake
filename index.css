@@ -2841,6 +2841,7 @@ main .main-container .shop-img {
 @media (max-width: 768px) {
   main .main-container .shop-img {
     background-image: url(./img/tribake-shop-2.jpg.png);
+    background-position: scroll;
   }
 }
 

@@ -1777,6 +1777,7 @@ main{
             justify-content: center; 
             @include mobile(){
                 background-image: url(./img/tribake-shop-2.jpg.png);
+                background-position: scroll;
             }
             .shop-logo{
                 display: flex;
