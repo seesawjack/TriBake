@@ -131,8 +131,8 @@ function openTab(evt, tabName) {
 
   //laoding 效果
   let loading= document.querySelector('.loader-wrapper');
-  
-  var random = Math.floor(Math.random() * $('.loading-img').length);
+
+  var random = Math.floor(Math.random() * $('.loading-img').length); //隨機出現不同圖片
   $('.loading-img').hide().eq(random).show();
   
   window.addEventListener('load',function(){

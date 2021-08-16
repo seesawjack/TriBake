@@ -54,6 +54,41 @@
         filter: brightness(1.07);
     }
 }
+//button hover effect
+@mixin button-hover {
+    position: relative;
+    display: block;
+    overflow: hidden; 
+
+    &,&:after{
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+    &::after {
+        background: #1b9b93;
+        content: '';
+        position: absolute;
+        z-index: -1;
+
+        height: 100%;
+        left: -35%;
+        top: 0;
+        transform: skew(5deg);
+        transition-duration: 0.6s;
+        transform-origin: top left;
+        width: 0;
+      }
+    &:hover:after {
+        width: 135%;
+    }
+    &:hover{
+        color: white;
+        border: 1px solid white;
+    }
+    
+}
 .loader-wrapper{
     width: 100%;
     height: 100%;
@@ -301,7 +336,7 @@ nav{
                 &:before{
                     content: "";
                     position: absolute;
-                    top: -15px;
+                    top: -20px;
                     left: 0px;
                     width: 120px;
                     height: 1px;
@@ -331,6 +366,7 @@ main{
         // 橫幅
         .banner{
             height: 100vh;
+            position: relative;
             .banner1{
                 @include phone(){
                     display:none;
@@ -347,6 +383,35 @@ main{
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+            }
+            .scroll-down{
+                width: 2px;
+                height: 120px;
+                background-color: rgb(255, 255, 255);
+                border-radius: 15px;
+                position: absolute;
+                bottom: 0px;
+                left: 50%;
+                .scroll-line{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 15px;
+                    background: linear-gradient(to bottom, rgb(27,155,147) 50%, rgba(27,155,147,0) 50%);
+                    background-position: 0 -120px;
+                    background-size: 100% 200%;
+                    animation: scrolldown 3s cubic-bezier(0.42, 0, 0.3, 1) forwards infinite;
+                }
+            }
+            @keyframes scrolldown {
+                0%{
+                    background-position: 0 -120px;
+                }
+                75% {
+                    background-position: 0 0;
+                }
+                100%{
+                    background-position: 0 120px;
+                }
             }
         }
         // 品牌理念
@@ -792,37 +857,35 @@ main{
                   &.first{
                      top: -125px;
                      left: -20px; 
-                     animation: cloud-move 8s infinite;
+                     animation: cloud-move 8s ease-in-out infinite;
                   }
                   &.second{
                     top: -135px;
                     left: -20px; 
-                    animation: cloud-move 6s infinite;
+                    animation: cloud-move 7s ease-in-out infinite;
                   }
                   &.third{
                     top: -135px;
                     left: -20px; 
-                    animation: cloud-move 4s infinite;
+                    animation: cloud-move 6s ease-in-out infinite;
                   }
                   @keyframes cloud-move {
                     0% {
-                      transform: translateX(0px);
+                      transform: translateX(3px);
                     }
                     
                     25% {
-                       transform: translateX(-5px);
+                       transform: translateX(-3px);
                     }
                     
                     50% {
-                       transform: translateX(5px);
+                       transform: translateX(3px);
                     }
-                    
                     75% {
-                      transform: translateX(-5px);
+                      transform: translateX(-3px);
                     }
-                    
                     100% {
-                      transform: translateX(5px);
+                      transform: translateX(3px);
                     }
                   }
                 }
@@ -931,7 +994,6 @@ main{
                                         color: white;
                                         margin: 0px;
                                         border-radius: 3px;
-                                        
                                         &:hover{
                                             filter: brightness(1.2);
                                         }
@@ -970,7 +1032,7 @@ main{
                             color: rgb(94,96,82);
                             position: relative;
                             cursor: pointer;
-                            transition: 1s;
+                            transition: .5s;
                             @include mobile(){
                                 font-size: 24px;
                                 transition: 1s;
@@ -1366,11 +1428,19 @@ main{
                                         line-height: 45px;
                                         margin: 0px auto;
                                         transition: 1s;
+                                       @include button-hover();
                                         @include laptop(){
                                             width: 100px;
                                             height: 35px;
                                             font-size: 18px;
                                             line-height: 35px;
+                                            transition: 1s;
+                                        }
+                                        @include mobile(){
+                                            width: 90px;
+                                            height: 30px;
+                                            font-size: 16px;
+                                            line-height: 30px;
                                             transition: 1s;
                                         }
                                     }
@@ -1705,6 +1775,9 @@ main{
             display: flex;
             align-items: center;
             justify-content: center; 
+            @include mobile(){
+                background-image: url(./img/tribake-shop-2.jpg.png);
+            }
             .shop-logo{
                 display: flex;
                 align-items: center;
@@ -1829,10 +1902,14 @@ footer{
                 }
                 p{
                     color: white;
+                    margin-left: 20px;
                 }
                 i{
-                    margin-right: 20px;
                     color: white;
+                    &:hover{
+                        transform: scale(1.3);
+                        transition: .2s;
+                    }
                 }
             }
             .social-media{
@@ -1845,11 +1922,11 @@ footer{
                 border: 3px solid white;
                 border-radius: 10px;
                 transition: 1s;
-                    @include tablet(){
+                @include tablet(){
                         width: 150px;
                         height: 40px;
                         transition: 1s;
-                    }
+                }
                 i{
                     color: white;
                     transition: .2s;
