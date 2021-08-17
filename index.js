@@ -133,6 +133,8 @@ function openTab(evt, tabName) {
   li.forEach(function(item,idx){
     item.addEventListener('click', function () {
       navbar.classList.remove('active');
+      burger.classList.remove('active');
+      burgerImg.classList.remove('active');
   });
   })
 
