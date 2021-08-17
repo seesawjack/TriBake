@@ -124,7 +124,7 @@ function openTab(evt, tabName) {
   let burgerImg = document.querySelector('.burger-img');
   let navbar = document.querySelector('.navbar');
   let li =Array.from(navbar.getElementsByTagName('a'));
-  console.log(li)
+
   burger.addEventListener('click',function(){
     burger.classList.toggle('active');
     burgerImg.classList.toggle('active');
