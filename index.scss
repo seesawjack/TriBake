@@ -508,7 +508,13 @@ main{
                             transition: 1s;
                         }
                         span{
-                            color: rgb(27,155,147);
+                           &.fade-in{
+                               transition: 2s;
+                               &.appear{
+                                transition: 2s;
+                                color: rgb(27,155,147);
+                               }
+                           }
                         }
                     }
                 }
@@ -669,7 +675,13 @@ main{
                             transition: 1s;
                         }
                         span{
-                            color: rgb(27,155,147);
+                            &.fade-in{
+                                transition: 2s;
+                                &.appear{
+                                 transition: 2s;
+                                 color: rgb(27,155,147);
+                                }
+                            }
                         }
                     }
                 }
@@ -812,7 +824,13 @@ main{
                             transition:1s;
                         }
                         span{
-                            color: rgb(27,155,147);
+                            &.fade-in{
+                                transition: 2s;
+                                &.appear{
+                                 transition: 2s;
+                                 color: rgb(27,155,147);
+                                }
+                            }
                         }
                     }
                 }

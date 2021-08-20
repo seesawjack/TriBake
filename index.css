@@ -709,7 +709,14 @@ main .main-container .brand-mind .discript .title p {
   }
 }
 
-main .main-container .brand-mind .discript .title p span {
+main .main-container .brand-mind .discript .title p span.fade-in {
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+main .main-container .brand-mind .discript .title p span.fade-in.appear {
+  -webkit-transition: 2s;
+  transition: 2s;
   color: #1b9b93;
 }
 
@@ -973,7 +980,14 @@ main .main-container .brand-mind-people .discript .title p {
   }
 }
 
-main .main-container .brand-mind-people .discript .title p span {
+main .main-container .brand-mind-people .discript .title p span.fade-in {
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+main .main-container .brand-mind-people .discript .title p span.fade-in.appear {
+  -webkit-transition: 2s;
+  transition: 2s;
   color: #1b9b93;
 }
 
@@ -1199,7 +1213,14 @@ main .main-container .brand-mind-product .discript .title p {
   }
 }
 
-main .main-container .brand-mind-product .discript .title p span {
+main .main-container .brand-mind-product .discript .title p span.fade-in {
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+main .main-container .brand-mind-product .discript .title p span.fade-in.appear {
+  -webkit-transition: 2s;
+  transition: 2s;
   color: #1b9b93;
 }
 
