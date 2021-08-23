@@ -1,6 +1,3 @@
-// wow
-new WOW().init();
-
 //視差效果
 document.addEventListener("mousemove",parallax);
 function parallax(e){
@@ -140,10 +137,15 @@ function openTab(evt, tabName) {
 
   //laoding 效果
   let loading= document.querySelector('.loader-wrapper');
-
-  var random = Math.floor(Math.random() * $('.loading-img').length); //隨機出現不同圖片
-  $('.loading-img').hide().eq(random).show();
   
+  function loadingImage(){
+    const loadingImg =Array.from(document.querySelectorAll('.loading-img'));
+    const random = Math.floor(Math.random() * loadingImg.length); //隨機出現不同圖片
+    loadingImg[random].classList.add('active');
+  } 
+
+  loadingImage();
+
   window.addEventListener('load',function(){
     let promise = new Promise((resolve)=>{
       window.setTimeout(function(){
