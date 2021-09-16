@@ -1,20 +1,7 @@
-//視差效果
-document.addEventListener("mousemove",parallax);
-function parallax(e){
-    this.querySelectorAll('.cloudy').forEach(layer=>{
-        const speed = layer.getAttribute('data-speed');
-
-        const x =(window.innerWidth - e.pageX*speed)/100
-        const y =(window.innerHeight - e.pageY*speed)/100
-        layer.style.transform =`translateX(${x}px) translateY(${y}px)`
-
-    })
-}
-
 //合作夥伴點擊效果
 function openTab(evt, tabName) {
     // Declare all variables
-    var i, tabcontent, tablinks;
+    let i, tabcontent, tablinks;
   
     // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -73,13 +60,13 @@ function openTab(evt, tabName) {
   let boxOut = Array.from(document.querySelectorAll('.box-outside')); 
   let flipBox =  Array.from(document.querySelectorAll('.flip-box-inner')); 
   
-  for (var i = 0; i < iconBtn.length; i++) {
+  for (let i = 0; i < iconBtn.length; i++) {
     iconBtn[i].addEventListener('click', function (e) {
       contentDisplay(e);
     });
   }
   function contentDisplay(e){
-    var t = e.target;
+    const t = e.target;
     t.classList.toggle('active');
     let it = Array.from(iconBtn).indexOf(event.target)
 
@@ -138,13 +125,12 @@ function openTab(evt, tabName) {
   //laoding 效果
   let loading= document.querySelector('.loader-wrapper');
   
-  function loadingImage(){
+  (function loadingImage(){
     const loadingImg =Array.from(document.querySelectorAll('.loading-img'));
     const random = Math.floor(Math.random() * loadingImg.length); //隨機出現不同圖片
     loadingImg[random].classList.add('active');
-  } 
+  })(); 
 
-  loadingImage();
 
   window.addEventListener('load',function(){
     let promise = new Promise((resolve)=>{
