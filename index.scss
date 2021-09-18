@@ -1805,9 +1805,6 @@ main{
                 background-image: url(./img/tribake-shop-2.jpg.png);
             }
             .shop-logo{
-                display: flex;
-                align-items: center;
-                justify-content: center; 
                 &.fade-in{
                     opacity: 0;
                     transition: all 1s ease-in-out;
