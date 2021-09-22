@@ -2167,6 +2167,9 @@ main .main-container .product-sale .product-content .product-box .flip-box-inner
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -2257,7 +2260,7 @@ main .main-container .product-sale .product-content .product-box .flip-box-inner
 }
 
 main .main-container .product-sale .product-content .product-box .flip-box-inner .flip-box-back .box-in .product-menu .menu p span {
-  font-size: 16px;
+  font-size: 12px;
   margin-right: 1px;
 }
 
