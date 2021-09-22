@@ -2206,6 +2206,7 @@ main .main-container .product-sale .product-content .product-box .flip-box-inner
 main .main-container .product-sale .product-content .product-box .flip-box-inner .flip-box-back .box-in .product-menu .menu p {
   font-size: 24px;
   color: #5e6052;
+  display: inline;
 }
 
 @media (max-width: 1200px) {
@@ -2260,7 +2261,7 @@ main .main-container .product-sale .product-content .product-box .flip-box-inner
 
 main .main-container .product-sale .product-content .product-box .flip-box-inner .flip-box-back .box-in .product-menu .menu p span {
   font-size: 12px;
-  margin-right: 2px;
+  margin-right: 1px;
 }
 
 main .main-container .product-sale .product-content .product-box .flip-box-inner .flip-box-back .box-in .product-menu .button {
