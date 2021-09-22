@@ -1386,7 +1386,7 @@ main{
                                     }
                                     .menu{
                                         display: flex;
-                                        justify-content: space-between;
+                                        // justify-content: space-between;
                                         align-items: flex-end;
                                         &:not(:last-child){
                                             margin-bottom: 20px;
