@@ -1814,17 +1814,16 @@ main{
                         opacity: 1;   
                     }
                 }
-                img{
                     transition: 1s;
                     @include mobile(){
                         width: 75%;
                         transition: 1s;
                     }
-                    @include phone(){
-                        width: 50%;
-                        transition: 1s;
+                    
+                    img{
+                        width: 100%;
                     }
-                }
+                
             }
         }
     }

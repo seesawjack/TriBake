@@ -2880,6 +2880,11 @@ main .main-container .shop-img {
   }
 }
 
+main .main-container .shop-img .shop-logo {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
 main .main-container .shop-img .shop-logo.fade-in {
   opacity: 0;
   -webkit-transition: all 1s ease-in-out;
@@ -2890,25 +2895,16 @@ main .main-container .shop-img .shop-logo.fade-in.appear {
   opacity: 1;
 }
 
-main .main-container .shop-img .shop-logo img {
-  -webkit-transition: 1s;
-  transition: 1s;
-}
-
 @media (max-width: 768px) {
-  main .main-container .shop-img .shop-logo img {
+  main .main-container .shop-img .shop-logo {
     width: 75%;
     -webkit-transition: 1s;
     transition: 1s;
   }
 }
 
-@media (max-width: 500px) {
-  main .main-container .shop-img .shop-logo img {
-    width: 50%;
-    -webkit-transition: 1s;
-    transition: 1s;
-  }
+main .main-container .shop-img .shop-logo img {
+  width: 100%;
 }
 
 footer {
