@@ -9,6 +9,7 @@
   scroll-behavior: smooth;
   font-family: 'cwTeXYen', sans-serif;
   text-decoration: none;
+  -webkit-text-size-adjust: none;
 }
 
 body {
