@@ -9,7 +9,6 @@
   scroll-behavior: smooth;
   font-family: 'cwTeXYen', sans-serif;
   text-decoration: none;
-  -webkit-text-size-adjust: none;
 }
 
 body {
@@ -2010,6 +2009,10 @@ main .main-container .product-sale .product-content .product-box .flip-box-inner
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+main .main-container .product-sale .product-content .product-box .flip-box-inner .flip-box-front {
+  z-index: -1;
 }
 
 main .main-container .product-sale .product-content .product-box .flip-box-inner .flip-box-front img {
